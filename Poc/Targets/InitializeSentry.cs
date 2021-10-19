@@ -14,6 +14,7 @@ namespace ApplicationPoc.Targets
 
         public void Execute(StartupContext context)
         {
+            // initialize sentry code
         }
     }
 }

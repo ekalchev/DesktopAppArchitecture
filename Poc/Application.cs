@@ -19,6 +19,8 @@ namespace ApplicationPoc
         {
             RegisterTargets();
             List<ITarget> startupSequence = new List<ITarget>();
+            startupSequence.Add(startupTarget);
+
             BuildStartupSequence(startupTarget, startupSequence);
             LogStartupSequence(startupSequence);
 
@@ -44,17 +46,28 @@ namespace ApplicationPoc
         {
             if(executeBefore.ContainsKey(currentTarget.Name) == true)
             {
-                foreach(var beforeTarget in executeBefore[currentTarget.Name])
+                var targets = executeBefore[currentTarget.Name];
+
+                foreach (var beforeTarget in executeBefore[currentTarget.Name])
+                {
+                    result.Insert(result.Count - 1, beforeTarget);
+                }
+
+                foreach (var beforeTarget in executeBefore[currentTarget.Name])
                 {
                     BuildStartupSequence(beforeTarget, result);
                 }
             }
 
-            result.Add(currentTarget);
-
             if (executeAfter.ContainsKey(currentTarget.Name) == true)
             {
-                foreach (var afterTarget in executeAfter[currentTarget.Name])
+                var targets = executeAfter[currentTarget.Name];
+                foreach (var afterTarget in targets)
+                {
+                    result.Add(afterTarget);
+                }
+
+                foreach (var afterTarget in targets)
                 {
                     BuildStartupSequence(afterTarget, result);
                 }

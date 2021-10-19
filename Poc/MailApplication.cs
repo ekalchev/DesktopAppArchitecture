@@ -44,6 +44,7 @@ namespace ApplicationPoc
 
             ExecuteAfter(new UwpStoreInitialize(false), "Startup");
             ExecuteBefore(new InitializeSQLiteDatabase(), "InitializeMsConnect");
+            ExecuteBefore(new InitializePartners(), "InitializeMsConnect");
             ExecuteAfter(new LoadMailAccounts(), "InitializeMsConnect");
         }
     }

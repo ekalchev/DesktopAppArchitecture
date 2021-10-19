@@ -13,8 +13,8 @@ namespace ApplicationPoc
         {
             ExecuteAfter(new RegisterDependencyInjectionTypes(), "Startup");
             ExecuteAfter(new InitializeLogger(), "RegisterDependencyInjectionTypes");
+            ExecuteAfter(new InitializeSentry(), "InitializeLogger");
             ExecuteAfter(new InitializeMsConnect(), "InitializeSentry");
-            ExecuteAfter(new InitializeMsConnect(), "RegisterDependencyInjectionTypes");
         }
 
         protected abstract void ShowFirstWindow();

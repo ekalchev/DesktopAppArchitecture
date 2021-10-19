@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace ApplicationPoc.Targets
 {
-    class InitializeLogger : ITarget
+    class InitializePartners : ITarget
     {
-        public string Name => "InitializeLogger";
+        public string Name => "InitializePartners";
 
         public bool CanExecute(StartupContext context) => true;
 
         public void Execute(StartupContext context)
         {
-            // logger initialization goes here
+            // initialize partners code
         }
     }
 }
